@@ -108,9 +108,11 @@ class GraphGenerator:
             algorithm_method(entrada, comparacao)
             counts.append(algorithm_instance.iteracoes)
 
-        plt.plot(sizes, counts, label=self.algorithm)
-        plt.xlabel('Input size')
-        plt.ylabel('Iterations')
+        plt.plot(sizes, counts, marker='o', label=self.algorithm)
+        plt.xlabel('Tamanho da entrada')
+        plt.ylabel('Iterações')
+        plt.title('Desempenho do Algoritmo {} na Busca de Substring'.format(self.algorithm))
+        plt.grid(True)
         plt.legend()
         plt.savefig(self.directory)
         plt.show()
@@ -118,7 +120,7 @@ class GraphGenerator:
 
 if __name__ == "__main__":
     entradaA = String('ABCDCBDCBDACBDABDCBADF')
-    entradaB = String('A' * 500000 + 'B')
+    entradaB = String('A' * 500000 + 'B' * 500000)
     comparacao = String('ADF')
 
     algorithms = StringSearchAlgorithms()
@@ -134,11 +136,11 @@ if __name__ == "__main__":
     graph_generator_rabin_karp2.generate_graph(entradaB, comparacao)
 
     graph_generator_kmp1 = GraphGenerator('knuth_morris_pratt', 'C:/Users/cassi/OneDrive - PUCRS - BR/Faculdade/V '
-                                                            'Semestre/Projeto e Otimização de '
-                                                            'Algoritmos/Atividades/T1/Knuth_ADF.jpg')
+                                                                'Semestre/Projeto e Otimização de '
+                                                                'Algoritmos/Atividades/T1/Knuth_ADF.jpg')
     graph_generator_kmp1.generate_graph(entradaA, comparacao)
 
     graph_generator_kmp2 = GraphGenerator('knuth_morris_pratt', 'C:/Users/cassi/OneDrive - PUCRS - BR/Faculdade/V '
-                                                            'Semestre/Projeto e Otimização de '
-                                                            'Algoritmos/Atividades/T1/Knuth_500000.jpg')
+                                                                'Semestre/Projeto e Otimização de '
+                                                                'Algoritmos/Atividades/T1/Knuth_500000.jpg')
     graph_generator_kmp2.generate_graph(entradaB, comparacao)
